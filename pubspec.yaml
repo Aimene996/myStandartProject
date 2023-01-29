@@ -29,11 +29,15 @@ environment:
 
 
 dependencies:
+  cloud_firestore: ^4.3.1
   cupertino_icons: ^1.0.2
+  firebase_core: ^2.4.1
   flutter:
     sdk: flutter
   flutter_firebase_firestore: ^0.0.1
+  flutter_screenutil: ^5.6.0
   get: ^4.6.5
+  google_sign_in: ^5.4.4
   intl: ^0.18.0
   lottie: ^2.2.0
   shared_preferences: ^2.0.17

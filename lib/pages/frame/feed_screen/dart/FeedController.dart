@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
-import 'package:paternproject/pages/frame/welcome/state.dart';
-import 'package:paternproject/routes/name.dart';
+import 'package:paternproject/pages/frame/feed_screen/dart/state.dart';
 
-class WelcomeController extends GetxController {
-  WelcomeController();
-  final title = "Applico. ";
-  final state = WelcomeState();
+
+class FeedController extends GetxController {
+  FeedController();
+
+  final state = FeedState();
   @override
   void onReady() {
     // ignore: avoid_print

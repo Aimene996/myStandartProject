@@ -1,1 +1,1 @@
-class WelcomeState {}
+class FeedState {}
