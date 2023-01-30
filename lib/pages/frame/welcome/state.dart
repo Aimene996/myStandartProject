@@ -1,1 +1,1 @@
-class SignInState {}
+class WelcomeState {}

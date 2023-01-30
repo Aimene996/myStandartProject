@@ -1,20 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:paternproject/pages/frame/welcome/index.dart';
-import 'package:paternproject/utility/appColors.dart';
+// ignore_for_file: prefer_const_constructors
 
-class LoginScreen extends GetView<WelcomeController> {
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:paternproject/pages/frame/login_screen/controller.dart';
+
+class LoginScreen extends GetView<LoginController> {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-
-          child: Text('Login')),
+      body: Container(child: Text('Login')),
     );
   }
-
-
 }

@@ -1,5 +1,8 @@
+// ignore_for_file: avoid_unnecessary_containers, duplicate_ignore
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:paternproject/routes/name.dart';
 import 'package:paternproject/utility/appColors.dart';
 
 import 'controller.dart';
@@ -14,7 +17,7 @@ class SignInScreen extends GetView<SignInController> {
         backgroundColor: Colors.grey.shade50,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Container(
+          child: SizedBox(
               height: double.infinity,
               width: double.infinity,
               child: Column(
@@ -35,7 +38,7 @@ class SignInScreen extends GetView<SignInController> {
                     height: 30,
                   ),
                   GestureDetector(
-                    onTap: () async{
+                    onTap: () async {
                       controller.handleSignIn("google");
                     },
                     child: Container(
@@ -43,17 +46,16 @@ class SignInScreen extends GetView<SignInController> {
                           BoxDecoration(color: AppColors.white, boxShadow: [
                         BoxShadow(
                             color: Colors.grey.withOpacity(0.1),
-                            offset: Offset(0, 1),
+                            offset: const Offset(0, 1),
                             blurRadius: 2,
                             spreadRadius: 1)
                       ]),
                       height: 50,
                       width: double.infinity,
                       child: Row(
-
                         children: const [
                           Padding(
-                            padding: EdgeInsets.only(left: 50,right: 30),
+                            padding: EdgeInsets.only(left: 50, right: 30),
                             child: Image(
                                 height: 35,
                                 width: 35,
@@ -73,7 +75,7 @@ class SignInScreen extends GetView<SignInController> {
                         BoxDecoration(color: AppColors.white, boxShadow: [
                       BoxShadow(
                           color: Colors.grey.withOpacity(0.1),
-                          offset: Offset(0, 1),
+                          offset: const Offset(0, 1),
                           blurRadius: 2,
                           spreadRadius: 1)
                     ]),
@@ -82,8 +84,9 @@ class SignInScreen extends GetView<SignInController> {
                     child: Row(
                       children: const [
                         Padding(
-                          padding: EdgeInsets.only(left: 50,right: 30),                          child: Image(
-                            height: 35,
+                          padding: EdgeInsets.only(left: 50, right: 30),
+                          child: Image(
+                              height: 35,
                               width: 35,
                               image: NetworkImage(
                                   'https://e7.pngegg.com/pngimages/991/568/png-clipart-facebook-logo-computer-icons-facebook-logo-facebook-thumbnail.png')),
@@ -100,7 +103,7 @@ class SignInScreen extends GetView<SignInController> {
                         BoxDecoration(color: AppColors.white, boxShadow: [
                       BoxShadow(
                           color: Colors.grey.withOpacity(0.1),
-                          offset: Offset(0, 1),
+                          offset: const Offset(0, 1),
                           blurRadius: 2,
                           spreadRadius: 1)
                     ]),
@@ -109,7 +112,8 @@ class SignInScreen extends GetView<SignInController> {
                     child: Row(
                       children: const [
                         Padding(
-                          padding: EdgeInsets.only(left: 50,right: 30),                          child: Image(
+                          padding: EdgeInsets.only(left: 50, right: 30),
+                          child: Image(
                               height: 35,
                               width: 35,
                               image: NetworkImage(
@@ -133,6 +137,7 @@ class SignInScreen extends GetView<SignInController> {
                             width: MediaQuery.of(context).size.width / 3,
                           ),
                         ),
+                        // ignore: avoid_unnecessary_containers
                         Container(
                           child: const Text('or'),
                         ),
@@ -146,11 +151,11 @@ class SignInScreen extends GetView<SignInController> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 13,
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       controller.handleSignIn("phone");
                     },
                     child: Container(
@@ -158,22 +163,22 @@ class SignInScreen extends GetView<SignInController> {
                           BoxDecoration(color: AppColors.white, boxShadow: [
                         BoxShadow(
                             color: Colors.grey.withOpacity(0.1),
-                            offset: Offset(0, 1),
+                            offset: const Offset(0, 1),
                             blurRadius: 2,
                             spreadRadius: 1)
                       ]),
                       height: 50,
                       width: double.infinity,
-                      child: Center(
+                      child: const Center(
                         child: Text("Sign In With Phone Number"),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
-                    margin: EdgeInsets.all(13),
+                    margin: const EdgeInsets.all(13),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
@@ -187,7 +192,21 @@ class SignInScreen extends GetView<SignInController> {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        Get.offAllNamed(AppRouts.feed);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: AppColors.primaryColors,
+                            borderRadius: BorderRadius.circular(17)),
+                        height: 40,
+                        width: double.infinity,
+                        child: Center(
+                          child: Text('Go to Feed'),
+                        ),
+                      ))
                 ],
               )),
         ),

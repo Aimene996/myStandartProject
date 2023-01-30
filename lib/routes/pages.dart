@@ -15,9 +15,7 @@ class AppPages {
         page: (() => const WelcomePage()),
         binding: WelcomeBindings()),
     GetPage(
-        name: AppRouts.feed,
-        page: (() => const FeedPage()),
-        binding: FeedBindings()),
+        name: AppRouts.feed, page: (() => FeedPage()), binding: FeedBindings()),
     GetPage(
         name: AppRouts.login,
         page: (() => const LoginScreen()),
