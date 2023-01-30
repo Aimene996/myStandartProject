@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:paternproject/pages/frame/feed_screen/dart/index.dart';
+
+import '../feed_screen/view.dart';
 
 class HomeController extends GetxController {
   HomeController();

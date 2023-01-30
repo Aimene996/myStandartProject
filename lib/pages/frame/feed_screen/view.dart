@@ -4,9 +4,8 @@ import 'package:paternproject/utility/appColors.dart';
 import '../../../../widgets/Custom_textField.dart';
 import 'FeedController.dart';
 
-class FeedPage extends StatelessWidget {
+class FeedPage extends GetView<FeedController> {
   FeedPage({Key? key}) : super(key: key);
-  FeedController controller = Get.put(FeedController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -96,25 +95,38 @@ class FeedPage extends StatelessWidget {
               const SizedBox(
                 height: 14,
               ),
-              Obx((() {
-                return SizedBox(
-                    height: 60,
-                    width: double.infinity,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        ...controller.lista.map((e) {
-                          controller.counter++;
-                          if (controller.counter <= 4) {
-                            return _buildLista(e, controller.counter);
-                          } else {
-                            controller.counter = 0;
-                            return _buildLista(e, controller.counter);
-                          }
-                        }).toList()
-                      ],
-                    ));
-              })),
+              SizedBox(
+                height: 60,
+                width: double.infinity,
+                child: _buildTabBar(),
+              ),
+              const SizedBox(
+                height: 14,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                ),
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Market",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "See All",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blueAccent,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                ),
+              ),
               const SizedBox(
                 height: 15,
               ),
@@ -252,40 +264,42 @@ class FeedPage extends StatelessWidget {
     );
   }
 
-  _buildLista(item, counter) {
-    return Padding(
-      padding: controller.counter != 0
-          ? const EdgeInsets.only(left: 25)
-          : const EdgeInsets.only(left: 6),
-      child: Container(
-        child: Column(
-          children: [
-            GestureDetector(
+  Widget _buildTabBar() {
+    return ListView.builder(
+        physics: const BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        itemCount: controller.lista.length,
+        itemBuilder: (ctx, i) {
+          return Obx(
+            () => GestureDetector(
               onTap: () {
-                controller.selectedItem = item;
+                controller.selectedIndex.value = i;
               },
-              child: Text(
-                item,
-                style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: controller.selectedItem == item
-                        ? AppColors.primaryColors
-                        : AppColors.black),
-              ),
+              child: AnimatedContainer(
+                  margin: EdgeInsets.fromLTRB(i == 0 ? 15 : 5, 0, 5, 0),
+                  width: 100,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(
+                        i == controller.selectedIndex.value ? 18 : 15)),
+                    color: i == controller.selectedIndex.value
+                        ? Colors.grey[700]
+                        : Colors.grey[200],
+                  ),
+                  duration: const Duration(milliseconds: 300),
+                  child: Center(
+                    child: Text(
+                      controller.lista[i],
+                      style: TextStyle(
+                        fontSize: 13.0,
+                        fontWeight: FontWeight.w500,
+                        color: i == controller.selectedIndex.value
+                            ? Colors.white
+                            : Colors.black,
+                      ),
+                    ),
+                  )),
             ),
-            Container(
-              height: 10,
-              width: 10,
-              decoration: BoxDecoration(
-                  color: controller.selectedItem == item
-                      ? AppColors.primaryColors
-                      : AppColors.transparent,
-                  borderRadius: BorderRadius.circular(20)),
-            )
-          ],
-        ),
-      ),
-    );
+          );
+        });
   }
 }

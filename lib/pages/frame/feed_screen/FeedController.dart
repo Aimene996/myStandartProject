@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:paternproject/pages/frame/feed_screen/dart/state.dart';
+import 'package:paternproject/pages/frame/feed_screen/index.dart';
 
 class FeedController extends GetxController {
   FeedController();
@@ -15,7 +15,7 @@ class FeedController extends GetxController {
     "travel",
     'hotel',
   ].obs;
-  int counter = -1.obs;
+  var selectedIndex = 0.obs;
   String selectedItem = "Sport";
   RxBool isShowIcons = false.obs;
   final state = FeedState();

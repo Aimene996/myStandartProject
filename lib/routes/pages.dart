@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:paternproject/pages/frame/feed_screen/dart/index.dart';
+import 'package:paternproject/pages/frame/feed_screen/view.dart';
 import 'package:paternproject/pages/frame/home/bindings.dart';
 import 'package:paternproject/pages/frame/home/view.dart';
 import 'package:paternproject/pages/frame/login_screen/index.dart';
