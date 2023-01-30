@@ -4,9 +4,9 @@ import 'package:paternproject/utility/appColors.dart';
 import '../../../../widgets/Custom_textField.dart';
 import 'FeedController.dart';
 
-class FeedPage extends GetView<FeedController> {
+class FeedPage extends StatelessWidget {
   FeedPage({Key? key}) : super(key: key);
-
+  FeedController controller = Get.put(FeedController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(

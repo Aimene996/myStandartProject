@@ -4,6 +4,6 @@ import 'package:paternproject/pages/frame/feed_screen/dart/FeedController.dart';
 class FeedBindings implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<FeedController>(() => FeedController());
+    Get.put<FeedController>(FeedController());
   }
 }

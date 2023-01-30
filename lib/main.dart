@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),
-              initialRoute: AppPages.feed,
+              initialRoute: AppPages.Home,
               getPages: AppPages.routes);
         }));
   }
