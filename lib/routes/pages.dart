@@ -3,12 +3,14 @@ import 'package:paternproject/pages/frame/feed_screen/view.dart';
 import 'package:paternproject/pages/frame/home/bindings.dart';
 import 'package:paternproject/pages/frame/home/view.dart';
 import 'package:paternproject/pages/frame/login_screen/index.dart';
+import 'package:paternproject/pages/frame/panier_screen/view.dart';
 import 'package:paternproject/pages/frame/search/bindings.dart';
 import 'package:paternproject/pages/frame/search/view.dart';
 import 'package:paternproject/pages/frame/settings/bindings.dart';
 import 'package:paternproject/pages/frame/settings/view.dart';
 import 'package:paternproject/pages/frame/signIn/index.dart';
 import 'package:paternproject/pages/frame/welcome/index.dart';
+import '../pages/frame/detailsCard/view.dart';
 import 'name.dart';
 
 class AppPages {
@@ -18,6 +20,7 @@ class AppPages {
   static const Home = AppRouts.HOME;
   static const search = AppRouts.search;
   static const settings = AppRouts.settings;
+  static const login = AppRouts.login;
   static List<GetPage> routes = [
     GetPage(
         name: AppRouts.INITIAL,
@@ -28,7 +31,7 @@ class AppPages {
     GetPage(name: AppRouts.feed, page: (() => FeedPage())),
     GetPage(
         name: AppRouts.login,
-        page: (() => const LoginScreen()),
+        page: (() => LoginScreen()),
         binding: LoginBindings()),
     //?===============
     GetPage(
@@ -50,5 +53,20 @@ class AppPages {
         name: AppRouts.search,
         page: (() => const SearchScreen()),
         binding: SearchBindings()),
+    //?===========
+    GetPage(
+        name: AppRouts.login,
+        page: (() => LoginScreen()),
+        binding: LoginBindings()),
+    //?===========
+    GetPage(
+      name: AppRouts.topSellCard,
+      page: (() => DetailsTopSell()),
+    ),
+    //?===========
+    GetPage(
+      name: AppRouts.panier,
+      page: (() => PanierScreen()),
+    ),
   ];
 }

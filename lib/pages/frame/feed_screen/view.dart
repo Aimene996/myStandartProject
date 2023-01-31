@@ -1,8 +1,11 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:paternproject/routes/name.dart';
 import 'package:paternproject/utility/appColors.dart';
 import '../../../../widgets/Custom_textField.dart';
 import 'FeedController.dart';
+import 'package:badges/badges.dart' as badges;
 
 class FeedPage extends GetView<FeedController> {
   FeedPage({Key? key}) : super(key: key);
@@ -32,15 +35,56 @@ class FeedPage extends GetView<FeedController> {
                               Icons.menu_outlined,
                               color: AppColors.black,
                             ))),
-                    Container(
-                        decoration: BoxDecoration(
-                            color: Colors.grey.shade200,
-                            borderRadius: BorderRadius.circular(20)),
-                        height: 40,
-                        width: 40,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.pinkAccent.shade100,
-                        )),
+                    Row(
+                      children: [
+                        //? here the section of pannier item
+                        GestureDetector(
+                          onTap: () {
+                            Get.offAll(AppRouts.panier);
+                          },
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.shade200,
+                                  borderRadius: BorderRadius.circular(20)),
+                              height: 40,
+                              width: 40,
+                              child: badges.Badge(
+                                position: badges.BadgePosition.topEnd(
+                                    top: -10, end: -12),
+                                showBadge: true,
+                                ignorePointer: false,
+                                onTap: () {},
+                                badgeAnimation:
+                                    const badges.BadgeAnimation.rotation(
+                                  animationDuration: Duration(seconds: 1),
+                                  colorChangeAnimationDuration:
+                                      Duration(seconds: 1),
+                                  loopAnimation: false,
+                                  curve: Curves.fastOutSlowIn,
+                                  colorChangeAnimationCurve: Curves.easeInCubic,
+                                ),
+                                badgeContent: const Icon(Icons.check,
+                                    color: Colors.white, size: 10),
+                                child: const Center(
+                                  child: Image(
+                                    height: 30,
+                                    width: 30,
+                                    image: AssetImage("assets/2662503.png"),
+                                  ),
+                                ),
+                              )),
+                        ),
+                        Container(
+                            decoration: BoxDecoration(
+                                color: Colors.grey.shade200,
+                                borderRadius: BorderRadius.circular(20)),
+                            height: 40,
+                            width: 40,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.pinkAccent.shade100,
+                            )),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -111,12 +155,12 @@ class FeedPage extends GetView<FeedController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Market",
+                      const Text(
+                        "Top Sell",
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.bold),
                       ),
-                      Text(
+                      const Text(
                         "See All",
                         style: TextStyle(
                             fontSize: 18,
@@ -130,6 +174,7 @@ class FeedPage extends GetView<FeedController> {
               const SizedBox(
                 height: 15,
               ),
+              // ? here have the Cart of top seller
               Container(
                 height: 250,
                 width: double.infinity,
@@ -137,123 +182,139 @@ class FeedPage extends GetView<FeedController> {
                   itemCount: 5,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return Container(
-                        margin: const EdgeInsets.all(10),
-                        height: 200.0,
-                        width: 150.0,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(colors: [
-                            AppColors.gradientTopLeft,
-                            AppColors.black
-                          ]),
-                          borderRadius: BorderRadius.circular(18),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 140.0,
-                              width: 150.0,
-                              child: Stack(children: [
-                                Positioned(
-                                  top: 10.0,
-                                  left: 10.0,
-                                  child: Container(
-                                    height: 120.0,
-                                    width: 130.0,
-                                    decoration: BoxDecoration(
-                                        image: const DecorationImage(
-                                          image: NetworkImage(
-                                              'https://images.unsplash.com/photo-1674784722614-451bbad3f507?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=418&q=80'),
-                                          fit: BoxFit.cover,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(15.0)),
-                                  ),
-                                ),
-                                Positioned(
-                                    right: 10.0,
+                    return GestureDetector(
+                      onTap: () {
+                        Get.toNamed(AppRouts.topSellCard);
+                      },
+                      child: Container(
+                          margin: const EdgeInsets.all(10),
+                          height: 200.0,
+                          width: 150.0,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(colors: [
+                              AppColors.gradientTopLeft,
+                              AppColors.black
+                            ]),
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                height: 140.0,
+                                width: 150.0,
+                                child: Stack(children: [
+                                  Positioned(
                                     top: 10.0,
-                                    child: Container(
-                                      height: 25.0,
-                                      width: 50.0,
-                                      decoration: BoxDecoration(
-                                          color: const Color(0xFF342520)
-                                              .withOpacity(0.7),
-                                          borderRadius: const BorderRadius.only(
-                                              topRight: Radius.circular(15.0),
-                                              bottomLeft:
-                                                  Radius.circular(15.0))),
-                                      child: Center(
-                                        child: Row(children: [
-                                          Icon(
-                                            Icons.star,
-                                            color: AppColors.coffeeUnselected,
-                                            size: 15.0,
-                                          ),
-                                          const Text('one',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white,
-                                                  fontSize: 13.0)),
-                                        ]),
+                                    left: 10.0,
+                                    child: Hero(
+                                      tag: 'tagImage',
+                                      child: Container(
+                                        height: 120.0,
+                                        width: 130.0,
+                                        decoration: BoxDecoration(
+                                            image: const DecorationImage(
+                                              image: NetworkImage(
+                                                  'https://images.unsplash.com/photo-1674784722614-451bbad3f507?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=418&q=80'),
+                                              fit: BoxFit.cover,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(15.0)),
                                       ),
-                                    )),
-                              ]),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 15),
-                              child: Text(
-                                "Travel to Usa",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 15),
-                              child: Text(
-                                "Estimate 21h",
-                                style: TextStyle(color: Colors.grey),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.only(left: 15),
-                                  child: Text(
-                                    "DZD 100",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 10),
-                                    child: Container(
-                                      height: 30,
-                                      width: 30,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.6),
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: const Icon(Icons.add_outlined),
                                     ),
                                   ),
+                                  Positioned(
+                                      right: 10.0,
+                                      top: 10.0,
+                                      child: Container(
+                                        height: 25.0,
+                                        width: 50.0,
+                                        decoration: BoxDecoration(
+                                            color: const Color(0xFF342520)
+                                                .withOpacity(0.7),
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(15.0),
+                                                    bottomLeft:
+                                                        Radius.circular(15.0))),
+                                        child: Center(
+                                          child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                const Icon(
+                                                  Icons.star,
+                                                  color: Colors.yellow,
+                                                  size: 15.0,
+                                                ),
+                                                const Text('4.6',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Colors.white,
+                                                        fontSize: 13.0)),
+                                              ]),
+                                        ),
+                                      )),
+                                ]),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 15),
+                                child: Text(
+                                  "Travel to Usa",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                              ],
-                            )
-                          ],
-                        ));
+                              ),
+                              const SizedBox(
+                                height: 4,
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 15),
+                                child: Text(
+                                  "Estimate 21h",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.only(left: 15),
+                                    child: Text(
+                                      "DZD 100",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: Container(
+                                        height: 30,
+                                        width: 30,
+                                        decoration: BoxDecoration(
+                                            color:
+                                                Colors.white.withOpacity(0.6),
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: const Icon(Icons.add_outlined),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          )),
+                    );
                   },
                 ),
               )
